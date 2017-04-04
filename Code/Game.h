@@ -12,10 +12,11 @@ class Game : public QWidget
 {
     Q_OBJECT
 public:
-    Game(QWidget *parent = 0);
+    Game();
 
 private:
     QGraphicsScene *scene;
+    Player *player;
 };
 
 #endif // GAME_H

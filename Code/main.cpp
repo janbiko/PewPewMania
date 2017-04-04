@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Player.h"
 #include <QApplication>
 #include <QGraphicsScene>
 

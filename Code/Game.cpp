@@ -1,11 +1,13 @@
 #include "Game.h"
 #include <QGraphicsScene>
 
-Game::Game(QWidget *parent)
+Game::Game()
 {
     scene = new QGraphicsScene();
     scene->setSceneRect(0, 0, 600, 600);
-    Player player = new Player();
+    player = new Player();
+    player->setPos(300, 300);
+    scene->addItem(player);
     scene->update();
 }
 

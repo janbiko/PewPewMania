@@ -2,8 +2,8 @@
 #include <QObject>
 #include <QGraphicsScene>
 
-Player::Player(QObject *parent) : QObject(parent), QGraphicsPixmapItem(parent)
+Player::Player() : QObject(), QGraphicsPixmapItem()
 {
-    setPixmap(PlayerModel);
+    setPixmap(QPixmap(":/assets/img/PlayerModel.png"));
 }
 
