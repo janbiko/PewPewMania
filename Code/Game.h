@@ -16,7 +16,7 @@ public:
 
 private:
     QGraphicsScene *scene;
-    Player *player;
+    //Player *player;
 };
 
 #endif // GAME_H

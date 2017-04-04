@@ -6,6 +6,9 @@
 
 Game::Game(QWidget *parent): QWidget(parent)
 {
+
+
+
     QPixmap background("../assets/img/background.png");
      background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
 
@@ -15,6 +18,9 @@ Game::Game(QWidget *parent): QWidget(parent)
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
 
+
+    Player *player = new Player();
+    scene->addItem(player);
 
     QGraphicsView *view = new QGraphicsView(scene, this);
 }

@@ -4,7 +4,7 @@
 
 Player::Player() : QObject(), QGraphicsPixmapItem()
 {
-    setPixmap(QPixmap(":/assets/img/PlayerModel.png"));
+    setPixmap(QPixmap("../assets/img/PlayerModel.png"));
 
 }
 
