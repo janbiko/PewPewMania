@@ -12,7 +12,7 @@ class Game : public QWidget
 {
     Q_OBJECT
 public:
-    Game();
+    Game(QWidget *parent = 0);
 
 private:
     QGraphicsScene *scene;
