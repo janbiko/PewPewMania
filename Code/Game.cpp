@@ -3,6 +3,8 @@
 #include <QGraphicsView>
 #include <QBrush>
 #include <QImage>
+#include "Player.h"
+#include <QGraphicsItem>
 
 Game::Game(QWidget *parent): QWidget(parent)
 {
@@ -20,6 +22,8 @@ Game::Game(QWidget *parent): QWidget(parent)
 
 
     Player *player = new Player();
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
+    player->setFocus();
     scene->addItem(player);
 
     QGraphicsView *view = new QGraphicsView(scene, this);

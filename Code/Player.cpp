@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <QObject>
 #include <QGraphicsScene>
+#include <QDebug>
 
 Player::Player() : QObject(), QGraphicsPixmapItem()
 {
@@ -9,6 +10,7 @@ Player::Player() : QObject(), QGraphicsPixmapItem()
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
+    qDebug() << "Key pressed.";
     pY = y();
     pX = x();
     mWidth = 36;

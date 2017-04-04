@@ -12,11 +12,12 @@ class Player : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Player();
+    void keyPressEvent(QKeyEvent * event);
 
 private:
     int mHeight, mWidth;
     int pX, pY;
-    void keyPressEvent(QKeyEvent*);
+
 };
 
 #endif // PLAYER_H
