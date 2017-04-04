@@ -1,0 +1,8 @@
+#include "game.h"
+
+game::game(QWidget *parent) : QGraphicsView
+{
+    scene = new QGraphicsScene(0, 0, 600, 600, this);
+
+}
+

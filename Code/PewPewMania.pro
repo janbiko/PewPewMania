@@ -12,11 +12,13 @@ TARGET = PewPewMania
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        widget.cpp \
-    player.cpp \
-    enemy.cpp
+SOURCES +=\
+    Enemy.cpp \
+    Game.cpp \
+    main.cpp \
+    Player.cpp
 
-HEADERS  += widget.h \
-    player.h \
-    enemy.h
+HEADERS  += \
+    Enemy.h \
+    Player.h \
+    Game.h

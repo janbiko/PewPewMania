@@ -1,17 +1,14 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include <QGraphicsScene>
 #include <QObject>
 
-class enemy : public QObject
+class Enemy : public QObject
 {
     Q_OBJECT
 public:
-    explicit enemy(QObject *parent = 0);
-
-signals:
-
-public slots:
+    Enemy(QObject *parent = 0);
 };
 
 #endif // ENEMY_H
