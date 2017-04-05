@@ -1,14 +1,26 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include <QGraphicsScene>
+#include <Game.h>
 #include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QKeyEvent>
 
-class Enemy : public QObject
+class Enemy : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Enemy(QObject *parent = 0);
+    Enemy();
+
+
+signals:
+
+public slots:
+    void move();
+private:
+    int mHeight, mWidth;
+    int mX, mY;
 };
 
 #endif // ENEMY_H

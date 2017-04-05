@@ -4,7 +4,9 @@
 #include <QBrush>
 #include <QImage>
 #include "Player.h"
+#include "Enemy.h"
 #include <QGraphicsItem>
+#include <iostream>
 
 Game::Game(QWidget *parent): QWidget(parent)
 {
@@ -25,6 +27,12 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
+
+    Enemy *enemy = new Enemy();
+    enemy->move();
+    scene->addItem(enemy);
+
+
 
     QGraphicsView *view = new QGraphicsView(scene, this);
 }

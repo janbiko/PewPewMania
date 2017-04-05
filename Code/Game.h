@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "Player.h"
+#include "Enemy.h"
 #include <QWidget>
 #include <QAbstractAnimation>
 #include <QGraphicsView>
