@@ -20,7 +20,6 @@ public slots:
     void move();
 private:
     int mHeight, mWidth;
-    int mX, mY;
 };
 
 #endif // ENEMY_H

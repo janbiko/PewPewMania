@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Game.h"
+
 #include <QObject>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
@@ -17,9 +17,10 @@ public:
     void movePlayer();
     void updatePlayer();
 private:
-    int mHeight, mWidth;
-    int pX, pY;
-    int dX, dY;
+    void initValues();
+    int pHeight, pWidth;
+    int pX, pY, pSpeed;
+    int sWidth, sHeight;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
 
 };

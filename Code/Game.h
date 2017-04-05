@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Bullet.h"
 #include <QWidget>
 #include <QAbstractAnimation>
 #include <QGraphicsView>
@@ -14,10 +15,14 @@ class Game : public QWidget
     Q_OBJECT
 public:
     Game(QWidget *parent = 0);
+public slots:
+    void updateGame();
+
 
 private:
     QGraphicsScene *scene;
-    //Player *player;
+    Player *player;
+    Bullet *bullet;
 };
 
 #endif // GAME_H
