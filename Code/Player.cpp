@@ -6,31 +6,55 @@
 Player::Player() : QObject(), QGraphicsPixmapItem()
 {
     setPixmap(QPixmap("../assets/img/PlayerModel.png"));
-
+    pX = 300;
+    pY = 300;
+    setPos(pX, pY);
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
-    qDebug() << "Key pressed.";
-    pY = y();
-    pX = x();
-    mWidth = 36;
-    mHeight = 37;
     //move Player
-    if(event->key() == Qt::Key_W){
-        if(pY > mHeight/2) moveBy(0, -10);
-    }
-    if(event->key() == Qt::Key_S){
-        if(pY < 600-mWidth/2) moveBy(0, 10);
-    }
-    if(event->key() == Qt::Key_A){
-        if(pX > mWidth/2) moveBy(-10, 0);
-    }
-    if(event->key() == Qt::Key_D){
-        if(pX < 600-mWidth/2) moveBy(10, 0);
-    }
-    //do the PewPew
-    if(event->key() == Qt::Key_Shift){
-        //TBD
+    switch(event->key()){
+        case Qt::Key_A:
+            keyLeftPressed = true;
+            break;
+        case Qt::Key_D:
+            keyRightPressed = true;
+            break;
+        case Qt::Key_W:
+            keyUpPressed = true;
+            break;
+        case Qt::Key_S:
+            keyDownPressed = true;
+            break;
     }
 }
 
+void Player::keyReleaseEvent(QKeyEvent *event){
+    if(!event->isAutoRepeat()){
+        switch(event->key()){
+            case Qt::Key_A:
+                keyLeftPressed = false;
+                break;
+            case Qt::Key_D:
+                keyRightPressed = false;
+                break;
+            case Qt::Key_W:
+                keyUpPressed = false;
+                break;
+            case Qt::Key_S:
+                keyDownPressed = false;
+                break;
+        }
+    }
+}
+
+void Player::movePlayer(){
+    if(keyLeftPressed) pX -= 2;
+    else if(keyRightPressed) pX += 2;
+    if(keyUpPressed) pY -= 2;
+    else if(keyDownPressed) pY += 2;
+}
+
+void Player::updatePlayer(){
+    setPos(pX, pY);
+}
