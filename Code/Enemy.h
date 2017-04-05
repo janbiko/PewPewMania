@@ -13,13 +13,14 @@ class Enemy : public QObject, public QGraphicsPixmapItem
 public:
     Enemy();
 
-
-signals:
-
 public slots:
     void move();
+
 private:
-    int mHeight, mWidth;
+    int randomSpawnSide();
+    char eSpawnSide;
+    int eHeight = 34;
+    int eWidth = 29;
 };
 
 #endif // ENEMY_H

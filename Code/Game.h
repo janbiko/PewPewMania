@@ -17,6 +17,7 @@ public:
     Game(QWidget *parent = 0);
 public slots:
     void updateGame();
+    void spawn();
 
 
 private:

@@ -8,13 +8,10 @@
 Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
 {
     setPixmap(QPixmap("../assets/img/EnemyModel.png"));
-    mWidth = 29;
-    mHeight = 34;
 
     // random Position
-
-    //setPos(0, random);
-
+    int randomY = rand() % 600;
+    setPos(randomSpawnSide(), randomY);
 
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -23,10 +20,35 @@ Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
 
 void Enemy::move()
 {
-    moveBy(10, 0);
-    if(x() > 500) {
+    if(eSpawnSide == 'l') {
+        moveBy(10, 0);
+    }
+    else if(eSpawnSide == 'r'){
+        moveBy(-10, 0);
+    }
+    if(x()> 660){
         scene()->removeItem(this);
         delete this;
+    }
+    else if(x()<-60){
+        scene()->removeItem(this);
+        delete this;
+    }
+}
+
+int Enemy::randomSpawnSide()
+{
+    int randomSpawn = rand() % 2;
+    if(randomSpawn == 0){
+        eSpawnSide = 'l';
+        return -50;
+    }
+    else{
+        eSpawnSide = 'r';
+        QTransform transform;
+        transform.rotate(180);
+        this->setTransform(transform);
+        return 650;
     }
 }
 

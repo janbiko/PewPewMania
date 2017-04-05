@@ -6,19 +6,28 @@
 #include <QGraphicsView>
 #include <QBrush>
 #include <QImage>
-
+#include <stdlib.h>
 #include <QGraphicsItem>
 #include <iostream>
+#include <time.h>
+#include <QTime>
 
 void Game::updateGame(){
     player->movePlayer();
     player->updatePlayer();
 }
 
+void Game::spawn()
+{
+    Enemy *enemy = new Enemy();
+    scene->addItem(enemy);
+}
+
 Game::Game(QWidget *parent): QWidget(parent)
 {
+    srand(time(NULL));
     QPixmap background("../assets/img/background.png");
-     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
 
     scene = new QGraphicsScene();
 
@@ -31,8 +40,11 @@ Game::Game(QWidget *parent): QWidget(parent)
     scene->addItem(player);
 
     Enemy *enemy = new Enemy();
-    enemy->move();
     scene->addItem(enemy);
+
+    QTimer *enemyTimer = new QTimer(this);
+    connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawn()));
+    enemyTimer->start(200);
 
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
