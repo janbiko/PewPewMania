@@ -7,7 +7,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 
-class Bullet : public QObject, public QGraphicsPixmapItem
+class Bullet : public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
@@ -20,6 +20,7 @@ private:
     int sWidth = 600;
     int bX, bY;
     char direction;
+    int pWidth = 36;
 };
 
 #endif // BULLET_H

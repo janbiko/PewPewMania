@@ -28,6 +28,7 @@ void Game::spawnBullet(char c)
 {
     Bullet *bullet = new Bullet(player->x(), player->y(), c);
     scene->addItem(bullet);
+    std::cout<<player->x()<<"  "<<player->y()<<c<<std::endl;
 }
 
 Game::Game(QWidget *parent): QWidget(parent)
@@ -45,9 +46,6 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
-
-    Bullet *bullet = new Bullet(100, 100, 'r');
-    scene->addItem(bullet);
 
     connect(player, SIGNAL(shotsFired(char)),this,SLOT(spawnBullet(char)));
 
