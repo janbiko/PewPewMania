@@ -21,7 +21,7 @@ public slots:
 private:
     QGraphicsScene *scene;
     Player *player;
-
+    Enemy *enemy;
 };
 
 #endif // GAME_H

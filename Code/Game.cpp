@@ -18,7 +18,7 @@ void Game::updateGame(){
 
 void Game::spawn()
 {
-    Enemy *enemy = new Enemy();
+    enemy = new Enemy();
     scene->addItem(enemy);
 }
 
@@ -41,7 +41,7 @@ Game::Game(QWidget *parent): QWidget(parent)
 
     QTimer *enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawn()));
-    enemyTimer->start(200);
+    enemyTimer->start(500);
 
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));
