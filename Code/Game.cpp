@@ -15,6 +15,7 @@
 void Game::updateGame(){
     player->movePlayer();
     player->updatePlayer();
+    bullet->moveBullet();
 }
 
 void Game::spawn()
@@ -38,6 +39,8 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
+
+
 
     Enemy *enemy = new Enemy();
     scene->addItem(enemy);

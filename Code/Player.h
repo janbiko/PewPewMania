@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-
+#include "Bullet.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
@@ -17,7 +17,10 @@ public:
     void movePlayer();
     void updatePlayer();
 private:
+    Bullet *bullet;
     void initValues();
+    void shoot();
+    bool facingRight;
     int pHeight, pWidth;
     int pX, pY, pSpeed;
     int sWidth, sHeight;
