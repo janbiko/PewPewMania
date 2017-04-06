@@ -1,7 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Bullet.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>

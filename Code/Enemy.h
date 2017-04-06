@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QTimer>
+#include <typeinfo>
 
 class Enemy : public QObject, public QGraphicsPixmapItem
 {

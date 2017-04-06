@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Bullet.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QBrush>

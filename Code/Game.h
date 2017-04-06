@@ -3,7 +3,6 @@
 
 #include "Player.h"
 #include "Enemy.h"
-#include "Bullet.h"
 #include <QWidget>
 #include <QAbstractAnimation>
 #include <QGraphicsView>
@@ -22,7 +21,6 @@ public slots:
 private:
     QGraphicsScene *scene;
     Player *player;
-    Bullet *bullet;
 
 };
 
