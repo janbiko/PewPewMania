@@ -10,15 +10,15 @@ Bullet::Bullet(int x, int y, char c) : QObject(), QGraphicsRectItem()
         setRect(bX, bY, bWidth, bHeight);
     }
     else if(c == 'l'){
-        setRect(bX-, bY, bWidth, bHeight);
+        setRect(bX, bY, bWidth, bHeight);
     }
 }
 
 void Bullet::moveBullet()
 {
     if(bX-bWidth<0 || bX > sWidth){
-        scene()->removeItem(this);
-        delete this;
+        //scene()->removeItem(this);
+        //delete this;
     }
     if(direction == 'l'){
         setPos(bX-bSpeed, bY);
