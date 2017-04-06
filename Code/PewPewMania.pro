@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += multimedia
 CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -17,9 +18,11 @@ SOURCES +=\
     Enemy.cpp \
     Game.cpp \
     main.cpp \
-    Player.cpp
+    Player.cpp \
+    mediaplayer.cpp
 
 HEADERS  += \
     Enemy.h \
     Player.h \
-    Game.h
+    Game.h \
+    mediaplayer.h

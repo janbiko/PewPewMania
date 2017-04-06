@@ -3,11 +3,13 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "mediaplayer.h"
 #include <QWidget>
 #include <QAbstractAnimation>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QTimer>
+
 
 class Game : public QWidget
 {
@@ -22,6 +24,7 @@ private:
     QGraphicsScene *scene;
     Player *player;
     Enemy *enemy;
+    MediaPlayer *mediaplayer;
 };
 
 #endif // GAME_H

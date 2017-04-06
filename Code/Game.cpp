@@ -28,6 +28,9 @@ Game::Game(QWidget *parent): QWidget(parent)
     QPixmap background("../assets/img/background.png");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
 
+    mediaplayer = new MediaPlayer();
+    mediaplayer->playBackgroundMusic();
+
     scene = new QGraphicsScene();
 
     scene->setSceneRect(0, 0, 600, 600);
