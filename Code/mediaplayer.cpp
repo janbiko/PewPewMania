@@ -6,7 +6,7 @@ MediaPlayer::MediaPlayer() : QObject()
 {
     mpBGMusicPlaylist = new QMediaPlaylist();
     mpBGMusicPlaylist->addMedia(QUrl("../assets/snd/background_music.wav"));
-    //mpBGMusicPlaylist->setPlaybackMode(QMediaPlaylist::loop);
+    mpBGMusicPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
 }
 
 void MediaPlayer::playBackgroundMusic()
