@@ -1,10 +1,10 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include "Game.h"
 #include <QGraphicsItem>
 #include <iostream>
 #include <QObject>
+#include <QGraphicsScene>
 
 class Bullet : public QObject, public QGraphicsRectItem
 {
