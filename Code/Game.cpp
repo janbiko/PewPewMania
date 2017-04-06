@@ -15,20 +15,12 @@
 void Game::updateGame(){
     player->movePlayer();
     player->updatePlayer();
-    bullet->moveBullet();
 }
 
 void Game::spawn()
 {
     Enemy *enemy = new Enemy();
     scene->addItem(enemy);
-}
-
-void Game::spawnBullet(char c)
-{
-    Bullet *bullet = new Bullet(player->x(), player->y(), c);
-    scene->addItem(bullet);
-    std::cout<<player->x()<<"  "<<player->y()<<c<<std::endl;
 }
 
 Game::Game(QWidget *parent): QWidget(parent)
@@ -47,7 +39,6 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFocus();
     scene->addItem(player);
 
-    connect(player, SIGNAL(shotsFired(char)),this,SLOT(spawnBullet(char)));
 
     QTimer *enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawn()));

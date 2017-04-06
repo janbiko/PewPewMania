@@ -17,11 +17,9 @@ SOURCES +=\
     Enemy.cpp \
     Game.cpp \
     main.cpp \
-    Player.cpp \
-    Bullet.cpp
+    Player.cpp
 
 HEADERS  += \
     Enemy.h \
     Player.h \
-    Game.h \
-    Bullet.h
+    Game.h

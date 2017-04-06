@@ -20,9 +20,11 @@ private:
     void initValues();
     void shoot();
     char facingSide;
-    int pHeight, pWidth;
+    int pHeight = 37;
+    int pWidth = 36;
     int pX, pY, pSpeed;
-    int sWidth, sHeight;
+    int sWidth = 600;
+    int sHeight = 600;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
 signals:
     void shotsFired(char);

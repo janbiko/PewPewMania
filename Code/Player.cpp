@@ -9,7 +9,6 @@ Player::Player() : QObject(), QGraphicsPixmapItem()
     setPixmap(QPixmap("../assets/img/PlayerFacingRight.png"));
     pX=pY = 300;
     pSpeed = 4;
-    sWidth=sHeight = 600;
     setPos(pX, pY);
     facingSide = 'r';
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
@@ -37,8 +36,8 @@ void Player::keyPressEvent(QKeyEvent *event){
             facingSide = 'r';
             setPixmap(QPixmap("../assets/img/PlayerFacingRight.png"));
             break;
-        case Qt::Key_C:     //do the PewPew
-            emit shotsFired(facingSide);
+        case Qt::Key_C:
+            //do the PewPew
             break;
     }
 }
@@ -63,10 +62,10 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 }
 
 void Player::movePlayer(){
-    if(keyLeftPressed) pX -= pSpeed;
-    else if(keyRightPressed) pX += pSpeed;
-    if(keyUpPressed) pY -= pSpeed;
-    else if(keyDownPressed) pY += pSpeed;
+    if(keyLeftPressed && pX>=1) pX -= pSpeed;
+    else if(keyRightPressed && pX<sWidth-pWidth) pX += pSpeed;
+    if(keyUpPressed && pY>=15) pY -= pSpeed;
+    else if(keyDownPressed && pY<sHeight-pHeight-15) pY += pSpeed;
 }
 
 void Player::updatePlayer(){

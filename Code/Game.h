@@ -18,12 +18,12 @@ public:
 public slots:
     void updateGame();
     void spawn();
-    void spawnBullet(char);
 
 private:
     QGraphicsScene *scene;
     Player *player;
     Bullet *bullet;
+
 };
 
 #endif // GAME_H
