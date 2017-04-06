@@ -24,6 +24,12 @@ void Game::spawn()
     scene->addItem(enemy);
 }
 
+void Game::spawnBullet(char c)
+{
+    Bullet *bullet = new Bullet(player->x(), player->y(), c);
+    scene->addItem(bullet);
+}
+
 Game::Game(QWidget *parent): QWidget(parent)
 {
     srand(time(NULL));
@@ -40,10 +46,10 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFocus();
     scene->addItem(player);
 
+    Bullet *bullet = new Bullet(100, 100, 'r');
+    scene->addItem(bullet);
 
-
-    Enemy *enemy = new Enemy();
-    scene->addItem(enemy);
+    connect(player, SIGNAL(shotsFired(char)),this,SLOT(spawnBullet(char)));
 
     QTimer *enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawn()));
@@ -57,3 +63,5 @@ Game::Game(QWidget *parent): QWidget(parent)
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
+
+

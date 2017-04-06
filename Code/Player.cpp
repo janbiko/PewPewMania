@@ -11,6 +11,7 @@ Player::Player() : QObject(), QGraphicsPixmapItem()
     pSpeed = 4;
     sWidth=sHeight = 600;
     setPos(pX, pY);
+    facingSide = 'r';
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
 }
 
@@ -29,16 +30,15 @@ void Player::keyPressEvent(QKeyEvent *event){
             keyDownPressed = true;
             break;
         case Qt::Key_Y:     //face left
-            facingRight = false;
+            facingSide = 'l';
             setPixmap(QPixmap("../assets/img/PlayerFacingLeft.png"));
             break;
         case Qt::Key_X:     //face right
-        facingRight = true;
+            facingSide = 'r';
             setPixmap(QPixmap("../assets/img/PlayerFacingRight.png"));
             break;
-        case Qt::Key_C:
-            //insert the PewPew
-            shoot();
+        case Qt::Key_C:     //do the PewPew
+            emit shotsFired(facingSide);
             break;
     }
 }
@@ -71,14 +71,4 @@ void Player::movePlayer(){
 
 void Player::updatePlayer(){
     setPos(pX, pY);
-}
-
-void Player::shoot()
-{
-    if(facingRight){
-        bullet = new Bullet(pX+pWidth/2, pY, 'r');
-    }
-    if(!facingRight){
-        bullet = new Bullet(pX-pWidth/2, pY, 'l');
-    }
 }

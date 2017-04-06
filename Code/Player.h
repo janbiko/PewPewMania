@@ -17,15 +17,15 @@ public:
     void movePlayer();
     void updatePlayer();
 private:
-    Bullet *bullet;
     void initValues();
     void shoot();
-    bool facingRight;
+    char facingSide;
     int pHeight, pWidth;
     int pX, pY, pSpeed;
     int sWidth, sHeight;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
-
+signals:
+    void shotsFired(char);
 };
 
 #endif // PLAYER_H

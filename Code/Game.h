@@ -18,7 +18,7 @@ public:
 public slots:
     void updateGame();
     void spawn();
-
+    void spawnBullet(char);
 
 private:
     QGraphicsScene *scene;

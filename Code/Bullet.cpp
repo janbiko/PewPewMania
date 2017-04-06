@@ -1,12 +1,12 @@
 #include "Bullet.h"
 #include <QGraphicsScene>
 
-Bullet::Bullet(int x, int y, char c) : QObject(), QGraphicsRectItem()
+Bullet::Bullet(int x, int y, char c) : QObject(), QGraphicsPixmapItem()
 {
     direction = c;
     bX = x;
     bY = y;
-    setRect(x, y, bWidth, bHeight);
+    setPixmap(QPixmap("../assets/img/PlayerFacingRight.png"));
 
 }
 
