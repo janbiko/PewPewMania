@@ -11,8 +11,13 @@ class Bullet: public QObject, public QGraphicsRectItem
 public:
     Bullet(int x, int y);
 
+private:
+    QList<QGraphicsItem *> colliding_items;
+    void checkForEnemyCollision();
+
 public slots:
-    void moveBullet();
+    void moveBulletR();
+    void moveBulletL();
 };
 
 #endif // BULLET_H

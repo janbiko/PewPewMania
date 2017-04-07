@@ -27,6 +27,7 @@ private:
     int sHeight = 600;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
     Bullet * bullet;
+    QTimer * bulletTimer;
 signals:
     void shotsFired(char);
 };

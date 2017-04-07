@@ -39,16 +39,17 @@ void Player::keyPressEvent(QKeyEvent *event){
             break;
         case Qt::Key_C:
             //do the PewPew
+            bulletTimer = new QTimer(this);
             if (facingSide == 'r') {
                 bullet = new Bullet(x() + 35, y() + 21);
                 scene()->addItem(bullet);
-                QTimer * bulletTimer = new QTimer(this);
-                connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBullet()));
-                bulletTimer->start(1000 / 60);
+                connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletR()));
             } else {
                 bullet = new Bullet(x() - 5, y() + 21);
                 scene()->addItem(bullet);
+                connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletL()));
             }
+            bulletTimer->start(1000 / 60);
             break;
     }
 }
