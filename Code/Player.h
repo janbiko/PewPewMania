@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
+#include <Bullet.h>
 
 class Player : public QObject, public QGraphicsPixmapItem
 {
@@ -25,6 +26,7 @@ private:
     int sWidth = 600;
     int sHeight = 600;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
+    Bullet * bullet;
 signals:
     void shotsFired(char);
 };

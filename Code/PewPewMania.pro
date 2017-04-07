@@ -19,10 +19,12 @@ SOURCES +=\
     Game.cpp \
     main.cpp \
     Player.cpp \
-    mediaplayer.cpp
+    mediaplayer.cpp \
+    Bullet.cpp
 
 HEADERS  += \
     Enemy.h \
     Player.h \
     Game.h \
-    mediaplayer.h
+    mediaplayer.h \
+    Bullet.h

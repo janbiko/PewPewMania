@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Game.h"
+#include "Bullet.h"
 #include <QObject>
 #include <QGraphicsScene>
 #include <QDebug>
@@ -38,6 +39,16 @@ void Player::keyPressEvent(QKeyEvent *event){
             break;
         case Qt::Key_C:
             //do the PewPew
+            if (facingSide == 'r') {
+                bullet = new Bullet(x() + 35, y() + 21);
+                scene()->addItem(bullet);
+                QTimer * bulletTimer = new QTimer(this);
+                connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBullet()));
+                bulletTimer->start(1000 / 60);
+            } else {
+                bullet = new Bullet(x() - 5, y() + 21);
+                scene()->addItem(bullet);
+            }
             break;
     }
 }
