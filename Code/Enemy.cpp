@@ -23,30 +23,30 @@ Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
     eAnimationTimer = new QTimer(this);
     if(eSpawnSide == 'l') {
         connect(eAnimationTimer, SIGNAL(timeout()), this, SLOT(animateRightWalkingEnemy()));
-        eAnimationTimer->start(150);
+        eAnimationTimer->start(120);
     } else {
         connect(eAnimationTimer, SIGNAL(timeout()), this, SLOT(animateLeftWalkingEnemy()));
-        eAnimationTimer->start(150);
+        eAnimationTimer->start(120);
     }
 }
 
 void Enemy::move()
 {
-    //checkForPlayerCollision();
-
-    if(eSpawnSide == 'l') {
-        moveBy(0.75, 0);
-    }
-    else if(eSpawnSide == 'r'){
-        moveBy(-0.75, 0);
-    }
-    if(x()> 660){
-        scene()->removeItem(this);
-        delete this;
-    }
-    else if(x()<-60){
-        scene()->removeItem(this);
-        delete this;
+    if(!checkForPlayerCollision()) {
+        if(eSpawnSide == 'l') {
+            moveBy(0.75, 0);
+        }
+        else if(eSpawnSide == 'r'){
+            moveBy(-0.75, 0);
+        }
+        if(x()> 660){
+            scene()->removeItem(this);
+            delete this;
+        }
+        else if(x()<-60){
+            scene()->removeItem(this);
+            delete this;
+        }
     }
 }
 
@@ -101,15 +101,17 @@ int Enemy::randomSpawnSide()
     }
 }
 
-void Enemy::checkForPlayerCollision()
+bool Enemy::checkForPlayerCollision()
 {
     colliding_items = collidingItems();
     for (int i = 0; i < colliding_items.size(); ++i) {
         if(typeid(*(colliding_items[i])) == typeid(Player)) {
-            scene()->removeItem(colliding_items[i]);
             scene()->removeItem(this);
+            delete this;
+            return true;
         }
     }
+    return false;
 }
 
 

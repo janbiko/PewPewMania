@@ -6,6 +6,9 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <Bullet.h>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include "mediaplayer.h"
 
 class Player : public QObject, public QGraphicsPixmapItem
 {
@@ -16,6 +19,11 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
     void movePlayer();
     void updatePlayer();
+
+public slots:
+    void animateRightWalkingPlayer();
+    void animateLeftWalkingPlayer();
+
 private:
     void initValues();
     void shoot();
@@ -28,6 +36,12 @@ private:
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
     Bullet * bullet;
     QTimer * bulletTimer;
+    int pCurrentFrame = 0;
+    QTimer * pAnimationTimer;
+    void animatePlayer();
+    int pAmmunition = 6;
+    MediaPlayer * mediaplayer;
+
 signals:
     void shotsFired(char);
 };

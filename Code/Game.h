@@ -18,13 +18,16 @@ public:
     Game(QWidget *parent = 0);
 public slots:
     void updateGame();
-    void spawn();
+    void spawnEnemy();
+    void increaseEnemySpawnRate();
 
 private:
     QGraphicsScene *scene;
     Player *player;
     Enemy *enemy;
+    QTimer *enemyTimer;
     MediaPlayer *mediaplayer;
+    int enemySpawnRate = 500;
 };
 
 #endif // GAME_H

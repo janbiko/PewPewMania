@@ -16,11 +16,19 @@ void Game::updateGame(){
     player->updatePlayer();
 }
 
-void Game::spawn()
+void Game::spawnEnemy()
 {
     enemy = new Enemy();
     scene->addItem(enemy);
 }
+
+void Game::increaseEnemySpawnRate()
+{
+    enemyTimer->start(enemySpawnRate);
+    if (enemySpawnRate > 100) enemySpawnRate -= 50;
+}
+
+
 
 Game::Game(QWidget *parent): QWidget(parent)
 {
@@ -42,9 +50,13 @@ Game::Game(QWidget *parent): QWidget(parent)
     scene->addItem(player);
 
 
-    QTimer *enemyTimer = new QTimer(this);
-    connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawn()));
-    enemyTimer->start(500);
+    QTimer * enemySpawnRateTimer = new QTimer(this);
+    connect(enemySpawnRateTimer, SIGNAL(timeout()), this, SLOT(increaseEnemySpawnRate()));
+    enemySpawnRateTimer->start(60000);
+
+    enemyTimer = new QTimer(this);
+    connect(enemyTimer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
+    enemyTimer->start(enemySpawnRate);
 
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateGame()));

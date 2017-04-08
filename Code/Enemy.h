@@ -21,7 +21,7 @@ public slots:
 
 private:
     int randomSpawnSide();
-    void checkForPlayerCollision();
+    bool checkForPlayerCollision();
     QList<QGraphicsItem *> colliding_items;
     QTimer * eMovementTimer;
     QTimer * eAnimationTimer;
