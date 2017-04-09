@@ -28,24 +28,6 @@ void Game::increaseEnemySpawnRate()
     if (enemySpawnRate > 100) enemySpawnRate -= 50;
 }
 
-void Game::createUI()
-{
-    rectUI = new QGraphicsRectItem(0, 0, 600, 50);
-    rectUI->setBrush(QBrush(QColor(80, 80, 80, 255)));
-    scene->addItem(rectUI);
-
-    score = 55550;
-    scoreString = std::to_string(score);
-    scoreBoard = new QGraphicsTextItem(QString::fromStdString(scoreString));
-    //scoreBoard->setPlainText(QString::fromStdString(score));
-    scoreBoard->setDefaultTextColor(Qt::white);
-    scoreBoard->setPos(20, 13);
-    scoreBoard->setFont(QFont("monospace", 20));
-    scene->addItem(scoreBoard);
-}
-
-
-
 Game::Game(QWidget *parent): QWidget(parent)
 {
     srand(time(NULL));
@@ -67,7 +49,9 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFocus();
     scene->addItem(player);
 
-    createUI();
+    ui = new UI();
+    scene->addItem(ui->rectUI);
+    scene->addItem(ui->scoreBoard);
 
     QTimer * enemySpawnRateTimer = new QTimer(this);
     connect(enemySpawnRateTimer, SIGNAL(timeout()), this, SLOT(increaseEnemySpawnRate()));

@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "UI.h"
 #include "mediaplayer.h"
 #include <QWidget>
 #include <QAbstractAnimation>
@@ -20,23 +21,21 @@ class Game : public QWidget
     Q_OBJECT
 public:
     Game(QWidget *parent = 0);
-    void createUI();
+    QGraphicsScene *scene;
+
 public slots:
     void updateGame();
     void spawnEnemy();
     void increaseEnemySpawnRate();
 
 private:
-    QGraphicsScene *scene;
+
     Player *player;
     Enemy *enemy;
     QTimer *enemyTimer;
     MediaPlayer *mediaplayer;
     int enemySpawnRate = 500;
-    QGraphicsRectItem *rectUI;
-    QGraphicsTextItem *scoreBoard;
-    std::string scoreString;
-    int score;
+    UI * ui;
 };
 
 #endif // GAME_H

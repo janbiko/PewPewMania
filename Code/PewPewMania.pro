@@ -20,11 +20,13 @@ SOURCES +=\
     main.cpp \
     Player.cpp \
     mediaplayer.cpp \
-    Bullet.cpp
+    Bullet.cpp \
+    UI.cpp
 
 HEADERS  += \
     Enemy.h \
     Player.h \
     Game.h \
     mediaplayer.h \
-    Bullet.h
+    Bullet.h \
+    UI.h
