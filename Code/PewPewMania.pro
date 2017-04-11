@@ -21,7 +21,7 @@ SOURCES +=\
     Player.cpp \
     mediaplayer.cpp \
     Bullet.cpp \
-    UI.cpp
+    Score.cpp
 
 HEADERS  += \
     Enemy.h \
@@ -29,4 +29,4 @@ HEADERS  += \
     Game.h \
     mediaplayer.h \
     Bullet.h \
-    UI.h
+    Score.h

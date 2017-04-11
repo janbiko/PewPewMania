@@ -1,7 +1,10 @@
-#include "Game.h"
-#include "Player.h"
 #include <QApplication>
+#include "Game.h"
 #include <QGraphicsScene>
+
+#include "Score.h"
+
+Score * score;
 
 int main(int argc, char *argv[])
 {

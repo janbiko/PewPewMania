@@ -4,6 +4,9 @@
 #include <QGraphicsRectItem>
 #include <QObject>
 #include <QGraphicsItem>
+#include "Score.h"
+
+extern Score * score;
 
 class Bullet: public QObject, public QGraphicsRectItem
 {

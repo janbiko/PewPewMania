@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <Bullet.h>
+#include "Score.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "mediaplayer.h"

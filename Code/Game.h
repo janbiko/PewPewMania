@@ -3,7 +3,7 @@
 
 #include "Player.h"
 #include "Enemy.h"
-#include "UI.h"
+#include "Score.h"
 #include "mediaplayer.h"
 #include <QWidget>
 #include <QAbstractAnimation>
@@ -15,6 +15,8 @@
 #include <string.h>
 #include <QString>
 #include <QGraphicsTextItem>
+
+extern Score * score;
 
 class Game : public QWidget
 {
@@ -35,7 +37,7 @@ private:
     QTimer *enemyTimer;
     MediaPlayer *mediaplayer;
     int enemySpawnRate = 500;
-    UI * ui;
+    //Score * score;
 };
 
 #endif // GAME_H

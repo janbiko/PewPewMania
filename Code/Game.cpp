@@ -41,6 +41,9 @@ Game::Game(QWidget *parent): QWidget(parent)
 
     scene = new QGraphicsScene();
 
+    score = new Score();
+    scene->addItem(score);
+
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
     setMinimumSize(600, 600);
@@ -49,9 +52,12 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFocus();
     scene->addItem(player);
 
-    ui = new UI();
-    scene->addItem(ui->rectUI);
-    scene->addItem(ui->scoreBoard);
+    //ui = new UI();
+    //scene->addItem(ui->scoreBoard);
+    //ui->increaseScore();
+
+
+
 
     QTimer * enemySpawnRateTimer = new QTimer(this);
     connect(enemySpawnRateTimer, SIGNAL(timeout()), this, SLOT(increaseEnemySpawnRate()));

@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Enemy.h"
+#include "Game.h"
 #include <QDebug>
 #include <QGraphicsScene>
 
@@ -34,6 +35,9 @@ void Bullet::checkForEnemyCollision()
     colliding_items = collidingItems();
     for (int i = 0; i < colliding_items.size(); ++i) {
         if(typeid(*(colliding_items[i])) == typeid(Enemy)) {
+            // increase score
+            score->increaseScore();
+
 
             scene()->removeItem(colliding_items.at(i));
             delete colliding_items.at(i);
