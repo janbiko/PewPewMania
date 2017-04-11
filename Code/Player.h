@@ -7,9 +7,12 @@
 #include <QKeyEvent>
 #include <Bullet.h>
 #include "Score.h"
+#include "Ammo.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "mediaplayer.h"
+
+extern Ammo * ammo;
 
 class Player : public QObject, public QGraphicsPixmapItem
 {

@@ -20,7 +20,7 @@ Player::Player() : QObject(), QGraphicsPixmapItem()
 
 void Player::animateRightWalkingPlayer()
 {
-    if(pCurrentFrame == 3) pCurrentFrame = 0;
+    if(pCurrentFrame == 4) pCurrentFrame = 0;
     if(pCurrentFrame == 0) {
         setPixmap(QPixmap("../assets/img/player/PlayerWalkRight0.png"));
         ++pCurrentFrame;
@@ -38,7 +38,7 @@ void Player::animateRightWalkingPlayer()
 
 void Player::animateLeftWalkingPlayer()
 {
-    if(pCurrentFrame == 3) pCurrentFrame = 0;
+    if(pCurrentFrame == 4) pCurrentFrame = 0;
     if(pCurrentFrame == 0) {
         setPixmap(QPixmap("../assets/img/player/PlayerWalkLeft0.png"));
         ++pCurrentFrame;
@@ -107,12 +107,14 @@ void Player::keyPressEvent(QKeyEvent *event){
                 }
                 bulletTimer->start(1000 / 60);
                 --pAmmunition;
+                ammo->decreaseAmmo();
             }
             break;
         case Qt::Key_C:
             // reload ammo
             mediaplayer->playReloadSound();
             pAmmunition = 6;
+            ammo->reloadAmmo();
     }
 }
 

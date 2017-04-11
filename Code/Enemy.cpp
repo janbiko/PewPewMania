@@ -10,8 +10,6 @@
 
 Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
 {
-    setPixmap(QPixmap("../assets/img/enemy/EnemyWalkLeft0.png"));
-
     // random Position
     int randomY = rand() % 600;
     setPos(randomSpawnSide(), randomY);
@@ -52,7 +50,7 @@ void Enemy::move()
 
 void Enemy::animateLeftWalkingEnemy()
 {
-    if(eCurrentFrame == 3) eCurrentFrame = 0;
+    if(eCurrentFrame == 4) eCurrentFrame = 0;
     if(eCurrentFrame == 0) {
         setPixmap(QPixmap("../assets/img/enemy/EnemyWalkLeft0.png"));
         ++eCurrentFrame;
@@ -70,7 +68,7 @@ void Enemy::animateLeftWalkingEnemy()
 
 void Enemy::animateRightWalkingEnemy()
 {
-    if(eCurrentFrame == 3) eCurrentFrame = 0;
+    if(eCurrentFrame == 4) eCurrentFrame = 0;
     if(eCurrentFrame == 0) {
         setPixmap(QPixmap("../assets/img/enemy/EnemyWalkRight0.png"));
         ++eCurrentFrame;
@@ -91,12 +89,10 @@ int Enemy::randomSpawnSide()
     int randomSpawn = rand() % 2;
     if(randomSpawn == 0){
         eSpawnSide = 'l';
-        setPixmap(QPixmap("../assets/img/enemy/EnemyWalkRight0.png"));
         return -50;
     }
     else{
         eSpawnSide = 'r';
-        setPixmap(QPixmap("../assets/img/enemy/EnemyWalkLeft0.png"));
         return 650;
     }
 }

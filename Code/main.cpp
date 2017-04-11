@@ -4,9 +4,11 @@
 
 #include "Score.h"
 #include "Lives.h"
+#include "Ammo.h"
 
 Score * score;
 Lives * lives;
+Ammo * ammo;
 
 int main(int argc, char *argv[])
 {

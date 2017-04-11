@@ -22,7 +22,8 @@ SOURCES +=\
     mediaplayer.cpp \
     Bullet.cpp \
     Score.cpp \
-    Lives.cpp
+    Lives.cpp \
+    Ammo.cpp
 
 HEADERS  += \
     Enemy.h \
@@ -31,4 +32,5 @@ HEADERS  += \
     mediaplayer.h \
     Bullet.h \
     Score.h \
-    Lives.h
+    Lives.h \
+    Ammo.h

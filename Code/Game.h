@@ -19,6 +19,7 @@
 
 extern Score * score;
 extern Lives * lives;
+extern Ammo * ammo;
 
 class Game : public QWidget
 {

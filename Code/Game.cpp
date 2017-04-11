@@ -47,6 +47,9 @@ Game::Game(QWidget *parent): QWidget(parent)
     lives = new Lives();
     scene->addItem(lives);
 
+    ammo = new Ammo();
+    scene->addItem(ammo);
+
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
     setMinimumSize(600, 600);
