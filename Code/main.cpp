@@ -3,8 +3,10 @@
 #include <QGraphicsScene>
 
 #include "Score.h"
+#include "Lives.h"
 
 Score * score;
+Lives * lives;
 
 int main(int argc, char *argv[])
 {

@@ -7,6 +7,9 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <typeinfo>
+#include "Lives.h"
+
+extern Lives * lives;
 
 class Enemy : public QObject, public QGraphicsPixmapItem
 {

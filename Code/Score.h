@@ -1,15 +1,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 
-#include <QObject>
-#include <QWidget>
-
 #include <QGraphicsTextItem>
-#include <QString>
-#include <string.h>
-
-
-
 
 class Score : public QGraphicsTextItem
 {

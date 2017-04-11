@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Score.h"
+#include "Lives.h"
 #include "mediaplayer.h"
 #include <QWidget>
 #include <QAbstractAnimation>
@@ -17,6 +18,7 @@
 #include <QGraphicsTextItem>
 
 extern Score * score;
+extern Lives * lives;
 
 class Game : public QWidget
 {
