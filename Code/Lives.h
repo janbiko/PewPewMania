@@ -8,6 +8,7 @@ class Lives : public QGraphicsTextItem
 public:
     Lives(QGraphicsItem * parent = 0);
     void decreaseLives();
+    int getLives();
 
 private:
     int lives;

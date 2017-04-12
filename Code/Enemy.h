@@ -32,6 +32,7 @@ private:
     char eSpawnSide;
     int eHeight = 34;
     int eWidth = 29;
+    bool gameOver();
 
 };
 

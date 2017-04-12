@@ -34,10 +34,13 @@ public slots:
     void increaseEnemySpawnRate();
 
 private:
-
     Player *player;
     Enemy *enemy;
+
     QTimer *enemyTimer;
+    QTimer * enemySpawnRateTimer;
+    QTimer * timer;
+
     MediaPlayer *mediaplayer;
     int enemySpawnRate = 500;
     //Score * score;

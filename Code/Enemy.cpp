@@ -8,6 +8,8 @@
 #include <QList>
 #include <iostream>
 
+extern Lives * lives;
+
 Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
 {
     // random Position
@@ -30,6 +32,7 @@ Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
 
 void Enemy::move()
 {
+    if (gameOver()) return;
     if(!checkForPlayerCollision()) {
         if(eSpawnSide == 'l') {
             moveBy(0.75, 0);
@@ -107,6 +110,16 @@ bool Enemy::checkForPlayerCollision()
             delete this;
             return true;
         }
+    }
+    return false;
+}
+
+bool Enemy::gameOver()
+{
+    if (lives->getLives() == 0) {
+        scene()->removeItem(this);
+        delete this;
+        return true;
     }
     return false;
 }

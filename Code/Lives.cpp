@@ -16,3 +16,8 @@ void Lives::decreaseLives()
     --lives;
     setPlainText(QString("Lives: ") + QString::number(lives));
 }
+
+int Lives::getLives()
+{
+    return lives;
+}
