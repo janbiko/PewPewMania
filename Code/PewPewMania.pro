@@ -23,7 +23,8 @@ SOURCES +=\
     Bullet.cpp \
     Score.cpp \
     Lives.cpp \
-    Ammo.cpp
+    Ammo.cpp \
+    GameOverScreen.cpp
 
 HEADERS  += \
     Enemy.h \
@@ -33,4 +34,5 @@ HEADERS  += \
     Bullet.h \
     Score.h \
     Lives.h \
-    Ammo.h
+    Ammo.h \
+    GameOverScreen.h

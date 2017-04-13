@@ -21,3 +21,9 @@ int Lives::getLives()
 {
     return lives;
 }
+
+void Lives::resetLives()
+{
+    lives = 3;
+    setPlainText(QString("Lives: ") + QString::number(lives));
+}

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <time.h>
 #include <QTime>
+#include <QDebug>
 
 void Game::updateGame(){
     player->movePlayer();
@@ -18,6 +19,11 @@ void Game::updateGame(){
         timer->stop();
         enemyTimer->stop();
         enemySpawnRateTimer->stop();
+        gameOverScreen = new GameOverScreen();
+        scene->addItem(gameOverScreen);
+        gameOverScreen->setFlag(QGraphicsItem::ItemIsFocusable);
+        gameOverScreen->setFocus();
+        gameOverTimer->start(200);
     }
 }
 
@@ -31,6 +37,22 @@ void Game::increaseEnemySpawnRate()
 {
     enemyTimer->start(enemySpawnRate);
     if (enemySpawnRate > 100) enemySpawnRate -= 50;
+}
+
+void Game::resetGame()
+{
+    if (gameOverScreen->getGameReset()) {
+        qDebug() << "kngfk";
+        score->resetScore();
+        lives->resetLives();
+        enemySpawnRate = 500;
+        timer->start(1000/60);
+        enemyTimer->start(enemySpawnRate);
+        enemySpawnRateTimer->start(60000);
+        player->setFocus();
+        scene->removeItem(gameOverScreen);
+        gameOverTimer->stop();
+    }
 }
 
 Game::Game(QWidget *parent): QWidget(parent)
@@ -67,6 +89,8 @@ Game::Game(QWidget *parent): QWidget(parent)
     //scene->addItem(ui->scoreBoard);
     //ui->increaseScore();
 
+    gameOverTimer = new QTimer(this);
+    connect(gameOverTimer, SIGNAL(timeout()), this, SLOT(resetGame()));
 
 
 

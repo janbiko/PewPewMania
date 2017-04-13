@@ -16,6 +16,7 @@
 #include <string.h>
 #include <QString>
 #include <QGraphicsTextItem>
+#include <GameOverScreen.h>
 
 extern Score * score;
 extern Lives * lives;
@@ -32,14 +33,17 @@ public slots:
     void updateGame();
     void spawnEnemy();
     void increaseEnemySpawnRate();
+    void resetGame();
 
 private:
     Player *player;
     Enemy *enemy;
+    GameOverScreen * gameOverScreen;
 
     QTimer *enemyTimer;
     QTimer * enemySpawnRateTimer;
     QTimer * timer;
+    QTimer * gameOverTimer;
 
     MediaPlayer *mediaplayer;
     int enemySpawnRate = 500;

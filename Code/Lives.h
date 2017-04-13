@@ -9,6 +9,7 @@ public:
     Lives(QGraphicsItem * parent = 0);
     void decreaseLives();
     int getLives();
+    void resetLives();
 
 private:
     int lives;

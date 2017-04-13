@@ -17,3 +17,14 @@ void Score::increaseScore()
     //setDefaultTextColor(Qt::black);
     //setFont(QFont("times", 16));
 }
+
+int Score::getScore()
+{
+    return score;
+}
+
+void Score::resetScore()
+{
+    score = 0;
+    setPlainText(QString("Score: ") + QString::number(score));
+}
