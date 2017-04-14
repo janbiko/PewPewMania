@@ -1,9 +1,10 @@
 #include "Ammo.h"
 
-Ammo::Ammo(): QObject(), QGraphicsPixmapItem()
+Ammo::Ammo(int gameWidth): QObject(), QGraphicsPixmapItem()
 {
+    aGameWidth = gameWidth;
     setPixmap(QPixmap("../assets/img/ammo/ammo6"));
-    setPos(250, y() + 10);
+    setPos(aGameWidth / 2 - aWidth, y() + aYOffset);
     this->setScale(1.5);
 }
 

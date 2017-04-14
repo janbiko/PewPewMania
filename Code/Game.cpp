@@ -29,7 +29,7 @@ void Game::updateGame(){
 
 void Game::spawnEnemy()
 {
-    enemy = new Enemy(this->width(), this->height());
+    enemy = new Enemy(scene->width(), scene->height());
     scene->addItem(enemy);
 }
 
@@ -75,13 +75,13 @@ Game::Game(QWidget *parent): QWidget(parent)
     lives = new Lives();
     scene->addItem(lives);
 
-    ammo = new Ammo();
+    ammo = new Ammo(scene->width());
     scene->addItem(ammo);
 
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
     setMinimumSize(600, 600);
-    player = new Player(this->width(), this->height());
+    player = new Player(scene->width(), scene->height());
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
@@ -108,7 +108,7 @@ Game::Game(QWidget *parent): QWidget(parent)
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    //qDebug() << this->size().rwidth();
+    qDebug() << scene->height();
 }
 
 
