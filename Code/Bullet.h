@@ -12,14 +12,15 @@ class Bullet: public QObject, public QGraphicsRectItem
 {
     Q_OBJECT
 public:
-    Bullet(int x, int y);
+    Bullet(int x, int y, int gameWidth);
 
 private:
     QList<QGraphicsItem *> colliding_items;
     bool checkForEnemyCollision();
-    int pBulletWidth = 5;
-    int pBulletHeight = 1;
-    int pBulletSpeed = 5;
+    int bBulletWidth = 5;
+    int bBulletHeight = 1;
+    int bBulletSpeed = 5;
+    int bGameWidth;
 
 public slots:
     void moveBulletR();

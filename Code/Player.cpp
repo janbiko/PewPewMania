@@ -93,11 +93,11 @@ void Player::keyPressEvent(QKeyEvent *event){
                 mediaplayer->playShootingSound();
                 bulletTimer = new QTimer(this);
                 if (pFacingSide == 'r') {
-                    bullet = new Bullet(x() + pBulletRXOffset, y() + pBulletYOffset);
+                    bullet = new Bullet(x() + pBulletRXOffset, y() + pBulletYOffset, pGameWidth);
                     scene()->addItem(bullet);
                     connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletR()));
                 } else {
-                    bullet = new Bullet(x() + pBulletLXOffset, y() + pBulletYOffset);
+                    bullet = new Bullet(x() + pBulletLXOffset, y() + pBulletYOffset, pGameWidth);
                     scene()->addItem(bullet);
                     connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletL()));
                 }

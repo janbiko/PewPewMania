@@ -4,16 +4,17 @@
 #include <QDebug>
 #include <QGraphicsScene>
 
-Bullet::Bullet(int x, int y): QObject(), QGraphicsRectItem()
+Bullet::Bullet(int x, int y, int gameWidth): QObject(), QGraphicsRectItem()
 {
-    setRect(x, y, pBulletWidth, pBulletHeight);
+    bGameWidth = gameWidth;
+    setRect(x, y, bBulletWidth, bBulletHeight);
 }
 
 void Bullet::moveBulletR()
 {
     if (!checkForEnemyCollision()) {
-        moveBy(pBulletSpeed, 0);
-        if(this->x() > 600) {
+        moveBy(bBulletSpeed, 0);
+        if(this->x() > bGameWidth) {
             scene()->removeItem(this);
             delete this;
         }
@@ -23,8 +24,8 @@ void Bullet::moveBulletR()
 void Bullet::moveBulletL()
 {
     if (!checkForEnemyCollision()) {
-        moveBy(-pBulletSpeed, 0);
-        if(this->x() < -600) {
+        moveBy(-bBulletSpeed, 0);
+        if(this->x() < -bGameWidth) {
             scene()->removeItem(this);
             delete this;
         }
@@ -41,10 +42,8 @@ bool Bullet::checkForEnemyCollision()
 
             scene()->removeItem(colliding_items.at(i));
             delete colliding_items.at(i);
-
             scene()->removeItem(this);
             delete this;
-
             return true;
         }
     }
