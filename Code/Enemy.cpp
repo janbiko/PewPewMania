@@ -8,6 +8,7 @@ Enemy::Enemy(int gameWidth, int gameHeigth): QObject(), QGraphicsPixmapItem()
 {
     eGameWidth = gameWidth;
     eGameHeight = gameHeigth;
+    eMovementSpeed = randomSpeed();
 
     // random Position
     int randomY = rand() % gameHeigth;
@@ -109,6 +110,12 @@ bool Enemy::checkForPlayerCollision()
         }
     }
     return false;
+}
+
+double Enemy::randomSpeed()
+{
+    double speed = (double)rand() / RAND_MAX;
+    return eMinSpeed + speed * (eMaxSpeed - eMinSpeed);
 }
 
 bool Enemy::gameOver()
