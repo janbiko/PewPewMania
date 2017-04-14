@@ -152,3 +152,8 @@ void Player::updatePlayer(){
     setPos(pX, pY);
 }
 
+void Player::resetKeys()
+{
+    keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
+}
+

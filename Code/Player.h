@@ -23,6 +23,7 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
     void movePlayer();
     void updatePlayer();
+    void resetKeys();
 
 public slots:
     void animateRightWalkingPlayer();

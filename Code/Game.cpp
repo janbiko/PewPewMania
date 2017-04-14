@@ -29,7 +29,7 @@ void Game::updateGame(){
 
 void Game::spawnEnemy()
 {
-    enemy = new Enemy();
+    enemy = new Enemy(this->width(), this->height());
     scene->addItem(enemy);
 }
 
@@ -42,13 +42,13 @@ void Game::increaseEnemySpawnRate()
 void Game::resetGame()
 {
     if (gameOverScreen->getGameReset()) {
-        qDebug() << "kngfk";
         score->resetScore();
         lives->resetLives();
         enemySpawnRate = 500;
         timer->start(1000/60);
         enemyTimer->start(enemySpawnRate);
         enemySpawnRateTimer->start(60000);
+        player->resetKeys();
         player->setFocus();
         scene->removeItem(gameOverScreen);
         gameOverTimer->stop();
@@ -109,6 +109,8 @@ Game::Game(QWidget *parent): QWidget(parent)
     QGraphicsView *view = new QGraphicsView(scene, this);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    //qDebug() << this->size().rwidth();
 }
 
 

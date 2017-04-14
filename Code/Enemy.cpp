@@ -1,19 +1,16 @@
 #include "Enemy.h"
 #include "Player.h"
-#include <QGraphicsPixmapItem>
-#include <QObject>
-#include <QGraphicsScene>
-#include <QTimer>
-#include <stdlib.h>
 #include <QList>
-#include <iostream>
 
 extern Lives * lives;
 
-Enemy::Enemy(): QObject(), QGraphicsPixmapItem()
+Enemy::Enemy(int gameWidth, int gameHeigth): QObject(), QGraphicsPixmapItem()
 {
+    eGameWidth = gameWidth;
+    eGameHeight = gameHeigth;
+
     // random Position
-    int randomY = rand() % 600;
+    int randomY = rand() % gameHeigth;
     setPos(randomSpawnSide(), randomY);
 
     eMovementTimer = new QTimer(this);
@@ -35,16 +32,16 @@ void Enemy::move()
     if (gameOver()) return;
     if(!checkForPlayerCollision()) {
         if(eSpawnSide == 'l') {
-            moveBy(0.75, 0);
+            moveBy(eMovementSpeed, 0);
         }
         else if(eSpawnSide == 'r'){
-            moveBy(-0.75, 0);
+            moveBy(-eMovementSpeed, 0);
         }
-        if(x()> 660){
+        if(x() > eGameWidth + eWorldBoundOffset){
             scene()->removeItem(this);
             delete this;
         }
-        else if(x()<-60){
+        else if(x() < 0 - eWorldBoundOffset){
             scene()->removeItem(this);
             delete this;
         }
@@ -92,11 +89,11 @@ int Enemy::randomSpawnSide()
     int randomSpawn = rand() % 2;
     if(randomSpawn == 0){
         eSpawnSide = 'l';
-        return -50;
+        return 0 - eWorldBoundOffset;
     }
     else{
         eSpawnSide = 'r';
-        return 650;
+        return eGameWidth + eWorldBoundOffset;
     }
 }
 

@@ -15,7 +15,7 @@ class Enemy : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Enemy();
+    Enemy(int gameWidth, int gameHeigth);
 
 public slots:
     void move();
@@ -32,6 +32,10 @@ private:
     char eSpawnSide;
     int eHeight = 34;
     int eWidth = 29;
+    float eMovementSpeed = 0.75;
+    int eGameWidth;
+    int eGameHeight;
+    int eWorldBoundOffset = 50;
     bool gameOver();
 
 };
