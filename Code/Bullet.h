@@ -16,7 +16,10 @@ public:
 
 private:
     QList<QGraphicsItem *> colliding_items;
-    void checkForEnemyCollision();
+    bool checkForEnemyCollision();
+    int pBulletWidth = 5;
+    int pBulletHeight = 1;
+    int pBulletSpeed = 5;
 
 public slots:
     void moveBulletR();

@@ -6,30 +6,32 @@
 
 Bullet::Bullet(int x, int y): QObject(), QGraphicsRectItem()
 {
-    setRect(x, y, 5, 1);
+    setRect(x, y, pBulletWidth, pBulletHeight);
 }
 
 void Bullet::moveBulletR()
 {
-    checkForEnemyCollision();
-    moveBy(5, 0);
-    if(this->x() > 600) {
-        scene()->removeItem(this);
-        delete this;
+    if (!checkForEnemyCollision()) {
+        moveBy(pBulletSpeed, 0);
+        if(this->x() > 600) {
+            scene()->removeItem(this);
+            delete this;
+        }
     }
 }
 
 void Bullet::moveBulletL()
 {
-    checkForEnemyCollision();
-    moveBy(-5, 0);
-    if(this->x() < -600) {
-        scene()->removeItem(this);
-        delete this;
+    if (!checkForEnemyCollision()) {
+        moveBy(-pBulletSpeed, 0);
+        if(this->x() < -600) {
+            scene()->removeItem(this);
+            delete this;
+        }
     }
 }
 
-void Bullet::checkForEnemyCollision()
+bool Bullet::checkForEnemyCollision()
 {
     colliding_items = collidingItems();
     for (int i = 0; i < colliding_items.size(); ++i) {
@@ -37,14 +39,14 @@ void Bullet::checkForEnemyCollision()
             // increase score
             score->increaseScore();
 
-
             scene()->removeItem(colliding_items.at(i));
             delete colliding_items.at(i);
 
-            //scene()->removeItem(this);
-            //delete this;
+            scene()->removeItem(this);
+            delete this;
 
-            return;
+            return true;
         }
     }
+    return false;
 }
