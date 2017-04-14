@@ -48,7 +48,8 @@ void Game::resetGame()
         timer->start(1000/60);
         enemyTimer->start(enemySpawnRate);
         enemySpawnRateTimer->start(60000);
-        player->resetKeys();
+        ammo->reloadAmmo();
+        player->resetPlayer();
         player->setFocus();
         scene->removeItem(gameOverScreen);
         gameOverTimer->stop();
@@ -80,14 +81,11 @@ Game::Game(QWidget *parent): QWidget(parent)
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
     setMinimumSize(600, 600);
-    player = new Player();
+    player = new Player(this->width(), this->height());
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
     scene->addItem(player);
 
-    //ui = new UI();
-    //scene->addItem(ui->scoreBoard);
-    //ui->increaseScore();
 
     gameOverTimer = new QTimer(this);
     connect(gameOverTimer, SIGNAL(timeout()), this, SLOT(resetGame()));

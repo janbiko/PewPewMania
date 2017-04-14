@@ -1,18 +1,14 @@
 #include "Player.h"
 #include "Game.h"
-#include "Bullet.h"
-#include <QObject>
-#include <QGraphicsScene>
-#include <QDebug>
-#include "mediaplayer.h"
 
-Player::Player() : QObject(), QGraphicsPixmapItem()
+Player::Player(int gameWidth, int gameHeight) : QObject(), QGraphicsPixmapItem()
 {
+    pGameWidth = gameWidth;
+    pGameHeight = gameHeight;
     setPixmap(QPixmap("../assets/img/PlayerFacingRight.png"));
-    pX=pY = 300;
-    pSpeed = 4;
+    pX = pGameWidth / 2;
+    pY = pGameHeight / 2;
     setPos(pX, pY);
-    facingSide = 'r';
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
     pAnimationTimer = new QTimer(this);
     mediaplayer = new MediaPlayer();
@@ -56,7 +52,7 @@ void Player::animateLeftWalkingPlayer()
 
 void Player::animatePlayer()
 {
-    if (facingSide == 'l') {
+    if (pFacingSide == 'l') {
         connect(pAnimationTimer, SIGNAL(timeout()), this, SLOT(animateLeftWalkingPlayer()));
         pAnimationTimer->start(150);
     } else {
@@ -84,11 +80,11 @@ void Player::keyPressEvent(QKeyEvent *event){
             //animatePlayer();
             break;
         case Qt::Key_Y:     //face left
-            facingSide = 'l';
+            pFacingSide = 'l';
             setPixmap(QPixmap("../assets/img/player/PlayerWalkLeft0.png"));
             break;
         case Qt::Key_X:     //face right
-            facingSide = 'r';
+            pFacingSide = 'r';
             setPixmap(QPixmap("../assets/img/player/PlayerWalkRight0.png"));
             break;
         case Qt::Key_Space:
@@ -96,12 +92,12 @@ void Player::keyPressEvent(QKeyEvent *event){
             if(pAmmunition > 0) {
                 mediaplayer->playShootingSound();
                 bulletTimer = new QTimer(this);
-                if (facingSide == 'r') {
-                    bullet = new Bullet(x() + 35, y() + 21);
+                if (pFacingSide == 'r') {
+                    bullet = new Bullet(x() + pBulletRXOffset, y() + pBulletYOffset);
                     scene()->addItem(bullet);
                     connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletR()));
                 } else {
-                    bullet = new Bullet(x() - 5, y() + 21);
+                    bullet = new Bullet(x() + pBulletLXOffset, y() + pBulletYOffset);
                     scene()->addItem(bullet);
                     connect(bulletTimer, SIGNAL(timeout()), bullet, SLOT(moveBulletL()));
                 }
@@ -155,5 +151,16 @@ void Player::updatePlayer(){
 void Player::resetKeys()
 {
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
+}
+
+void Player::resetAmmo()
+{
+    pAmmunition = 6;
+}
+
+void Player::resetPlayer()
+{
+    resetKeys();
+    resetAmmo();
 }
 

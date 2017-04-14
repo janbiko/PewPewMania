@@ -18,12 +18,13 @@ class Player : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Player();
+    Player(int gameWidth, int gameHeight);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void movePlayer();
     void updatePlayer();
-    void resetKeys();
+    void resetPlayer();
+
 
 public slots:
     void animateRightWalkingPlayer();
@@ -32,19 +33,27 @@ public slots:
 private:
     void initValues();
     void shoot();
-    char facingSide;
+    void resetKeys();
+    void resetAmmo();
+    char pFacingSide = 'r';
     int pHeight = 37;
     int pWidth = 36;
-    int pX, pY, pSpeed;
+    int pX, pY;
+    int pSpeed = 4;
     int sWidth = 600;
     int sHeight = 600;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
     Bullet * bullet;
     QTimer * bulletTimer;
+    int pBulletYOffset = 21;
+    int pBulletRXOffset = 35;
+    int pBulletLXOffset = -5;
     int pCurrentFrame = 0;
     QTimer * pAnimationTimer;
     void animatePlayer();
     int pAmmunition = 6;
+    int pGameWidth;
+    int pGameHeight;
     MediaPlayer * mediaplayer;
 
 signals:
