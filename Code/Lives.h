@@ -2,6 +2,7 @@
 #define LIVES_H
 
 #include <QGraphicsTextItem>
+#include <QFont>
 
 class Lives : public QGraphicsTextItem
 {

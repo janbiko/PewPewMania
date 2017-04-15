@@ -1,5 +1,4 @@
 #include "Lives.h"
-#include <QFont>
 
 Lives::Lives(int gameWidth)
 {
