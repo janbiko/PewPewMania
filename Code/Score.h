@@ -2,6 +2,7 @@
 #define SCORE_H
 
 #include <QGraphicsTextItem>
+#include <QFont>
 
 class Score : public QGraphicsTextItem
 {
@@ -12,7 +13,8 @@ public:
     void resetScore();
 
 private:
-    int score;
+    int sScore;
+    int sFontSize = 18;
 
 };
 

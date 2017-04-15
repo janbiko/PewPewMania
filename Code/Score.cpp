@@ -1,30 +1,26 @@
 #include "Score.h"
-#include <QFont>
 
 Score::Score(QGraphicsItem *parent): QGraphicsTextItem(parent)
 {
-    score = 0;
-
-    setPlainText(QString("Score: ") + QString::number(score));
+    sScore = 0;
+    setPlainText(QString("Score: ") + QString::number(sScore));
     setDefaultTextColor(Qt::white);
-    setFont(QFont("power green small", 18));
+    setFont(QFont("power green small", sFontSize));
 }
 
 void Score::increaseScore()
 {
-    ++score;
-    setPlainText(QString("Score: ") + QString::number(score));
-    //setDefaultTextColor(Qt::black);
-    //setFont(QFont("times", 16));
+    ++sScore;
+    setPlainText(QString("Score: ") + QString::number(sScore));
 }
 
 int Score::getScore()
 {
-    return score;
+    return sScore;
 }
 
 void Score::resetScore()
 {
-    score = 0;
-    setPlainText(QString("Score: ") + QString::number(score));
+    sScore = 0;
+    setPlainText(QString("Score: ") + QString::number(sScore));
 }
