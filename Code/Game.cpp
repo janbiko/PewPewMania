@@ -19,8 +19,9 @@ void Game::updateGame(){
         timer->stop();
         enemyTimer->stop();
         enemySpawnRateTimer->stop();
-        gameOverScreen = new GameOverScreen();
+        gameOverScreen = new GameOverScreen(scene->width(), scene->height());
         scene->addItem(gameOverScreen);
+        scene->addItem(gameOverScreen->goText);
         gameOverScreen->setFlag(QGraphicsItem::ItemIsFocusable);
         gameOverScreen->setFocus();
         gameOverTimer->start(200);
@@ -52,6 +53,7 @@ void Game::resetGame()
         player->resetPlayer();
         player->setFocus();
         scene->removeItem(gameOverScreen);
+        scene->removeItem(gameOverScreen->goText);
         gameOverTimer->stop();
     }
 }
@@ -89,7 +91,6 @@ Game::Game(QWidget *parent): QWidget(parent)
 
     gameOverTimer = new QTimer(this);
     connect(gameOverTimer, SIGNAL(timeout()), this, SLOT(resetGame()));
-
 
 
     enemySpawnRateTimer = new QTimer(this);

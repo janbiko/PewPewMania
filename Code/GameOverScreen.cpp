@@ -1,24 +1,29 @@
 #include "GameOverScreen.h"
-#include <QFont>
-#include <QDebug>
 
-GameOverScreen::GameOverScreen(QGraphicsItem *parent): QGraphicsTextItem(parent)
+GameOverScreen::GameOverScreen(int gameWidth, int gameHeight)
 {
-    setPlainText(QString("Score: ") + QString::number(score->getScore()) + QString("\n \n") + QString("Press Return to restart."));
+    gGameWidth = gameWidth;
+    gGameHeight = gameHeight;
+    setPlainText(QString("Score: ") + QString::number(score->getScore()));
     setDefaultTextColor(Qt::white);
-    setFont(QFont("power green small", 24));
-    setPos(250, 250);
+    setFont(QFont("power green small", fontSize));
+
+    setPos(gameWidth / 2 - scoreTextXOffset, gGameHeight / 2 - scoreTextYOffset);
+
+    goText = new QGraphicsTextItem();
+    goText->setPlainText(QString("Press Return to restart."));
+    goText->setDefaultTextColor(Qt::white);
+    goText->setFont(QFont("power green small", fontSize));
+    goText->setPos(this->x() - goTextXOffset, this->y() + goTextYOffset);
 }
 
 void GameOverScreen::keyPressEvent(QKeyEvent *event)
 {
     switch(event->key()){
         case Qt::Key_Return:
-            qDebug() << "Läuft";
             gameReset = true;
             break;
     }
-    //return false;
 }
 
 bool GameOverScreen::getGameReset()
