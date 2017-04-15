@@ -1,6 +1,4 @@
-#include "mediaplayer.h"
-#include <QUrl>
-
+#include "Mediaplayer.h"
 
 MediaPlayer::MediaPlayer() : QObject()
 {

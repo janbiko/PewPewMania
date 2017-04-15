@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMediaPlaylist>
 #include <QMediaPlayer>
+#include <QUrl>
 
 class MediaPlayer : public QObject
 {
