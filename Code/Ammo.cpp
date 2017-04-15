@@ -10,29 +10,29 @@ Ammo::Ammo(int gameWidth): QObject(), QGraphicsPixmapItem()
 
 void Ammo::decreaseAmmo()
 {
-    if(ammo == 6) {
+    if(aAmmo == 6) {
         setPixmap(QPixmap("../assets/img/ammo/ammo5"));
-        --ammo;
-    } else if (ammo == 5) {
+        --aAmmo;
+    } else if (aAmmo == 5) {
         setPixmap(QPixmap("../assets/img/ammo/ammo4"));
-        --ammo;
-    } else if (ammo == 4) {
+        --aAmmo;
+    } else if (aAmmo == 4) {
         setPixmap(QPixmap("../assets/img/ammo/ammo3"));
-        --ammo;
-    } else if (ammo == 3) {
+        --aAmmo;
+    } else if (aAmmo == 3) {
         setPixmap(QPixmap("../assets/img/ammo/ammo2"));
-        --ammo;
-    } else if (ammo == 2) {
+        --aAmmo;
+    } else if (aAmmo == 2) {
         setPixmap(QPixmap("../assets/img/ammo/ammo1"));
-        --ammo;
-    } else if (ammo == 1) {
+        --aAmmo;
+    } else if (aAmmo == 1) {
         setPixmap(QPixmap("../assets/img/ammo/ammo0"));
-        --ammo;
+        --aAmmo;
     }
 }
 
 void Ammo::reloadAmmo()
 {
-    ammo = 6;
+    aAmmo = 6;
     setPixmap(QPixmap("../assets/img/ammo/ammo6"));
 }

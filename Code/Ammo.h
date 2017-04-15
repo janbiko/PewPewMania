@@ -13,7 +13,7 @@ public:
     void reloadAmmo();
 
 private:
-    int ammo = 6;
+    int aAmmo = 6;
     int aWidth = 61;
     int aGameWidth;
     int aYOffset = 10;
