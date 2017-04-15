@@ -40,8 +40,6 @@ private:
     int pWidth = 36;
     int pX, pY;
     int pSpeed = 4;
-    int sWidth = 600;
-    int sHeight = 600;
     bool keyLeftPressed, keyRightPressed, keyUpPressed, keyDownPressed;
     Bullet * bullet;
     QTimer * bulletTimer;

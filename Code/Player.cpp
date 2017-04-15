@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Game.h"
+#include <QDebug>
 
 Player::Player(int gameWidth, int gameHeight) : QObject(), QGraphicsPixmapItem()
 {
@@ -139,9 +140,9 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 
 void Player::movePlayer(){
     if(keyLeftPressed && pX>=1) pX -= pSpeed;
-    else if(keyRightPressed && pX<sWidth-pWidth) pX += pSpeed;
+    else if(keyRightPressed && pX<pGameWidth-pWidth) pX += pSpeed;
     if(keyUpPressed && pY>=15) pY -= pSpeed;
-    else if(keyDownPressed && pY<sHeight-pHeight-15) pY += pSpeed;
+    else if(keyDownPressed && pY<pGameHeight-pHeight-15) pY += pSpeed;
 }
 
 void Player::updatePlayer(){
