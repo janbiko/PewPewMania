@@ -1,29 +1,29 @@
 #include "Lives.h"
 #include <QFont>
 
-Lives::Lives(QGraphicsItem *parent): QGraphicsTextItem(parent)
+Lives::Lives(int gameWidth)
 {
-    lives = 3;
-
-    setPlainText(QString("Lives: ") + QString::number(lives));
+    lGameWidth = gameWidth;
+    lLives = 3;
+    setPlainText(QString("Lives: ") + QString::number(lLives));
     setDefaultTextColor(Qt::white);
-    setFont(QFont("power green small", 18));
-    setPos(500, y());
+    setFont(QFont("power green small", lFontSize));
+    setPos(lGameWidth - lLivesXOffset, y());
 }
 
 void Lives::decreaseLives()
 {
-    --lives;
-    setPlainText(QString("Lives: ") + QString::number(lives));
+    --lLives;
+    setPlainText(QString("Lives: ") + QString::number(lLives));
 }
 
 int Lives::getLives()
 {
-    return lives;
+    return lLives;
 }
 
 void Lives::resetLives()
 {
-    lives = 3;
-    setPlainText(QString("Lives: ") + QString::number(lives));
+    lLives = 3;
+    setPlainText(QString("Lives: ") + QString::number(lLives));
 }

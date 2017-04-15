@@ -7,7 +7,6 @@ GameOverScreen::GameOverScreen(int gameWidth, int gameHeight)
     setPlainText(QString("Score: ") + QString::number(score->getScore()));
     setDefaultTextColor(Qt::white);
     setFont(QFont("power green small", fontSize));
-
     setPos(gameWidth / 2 - scoreTextXOffset, gGameHeight / 2 - scoreTextYOffset);
 
     goText = new QGraphicsTextItem();

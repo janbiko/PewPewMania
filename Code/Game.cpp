@@ -71,14 +71,7 @@ Game::Game(QWidget *parent): QWidget(parent)
 
     scene = new QGraphicsScene();
 
-    score = new Score();
-    scene->addItem(score);
 
-    lives = new Lives();
-    scene->addItem(lives);
-
-    ammo = new Ammo(scene->width());
-    scene->addItem(ammo);
 
     scene->setSceneRect(0, 0, 600, 600);
     scene->setBackgroundBrush(background);
@@ -88,6 +81,15 @@ Game::Game(QWidget *parent): QWidget(parent)
     player->setFocus();
     scene->addItem(player);
 
+
+    score = new Score();
+    scene->addItem(score);
+
+    lives = new Lives(scene->width());
+    scene->addItem(lives);
+
+    ammo = new Ammo(scene->width());
+    scene->addItem(ammo);
 
     gameOverTimer = new QTimer(this);
     connect(gameOverTimer, SIGNAL(timeout()), this, SLOT(resetGame()));
