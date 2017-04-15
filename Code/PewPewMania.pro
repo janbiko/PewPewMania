@@ -19,20 +19,20 @@ SOURCES +=\
     Game.cpp \
     main.cpp \
     Player.cpp \
-    mediaplayer.cpp \
     Bullet.cpp \
     Score.cpp \
     Lives.cpp \
     Ammo.cpp \
-    GameOverScreen.cpp
+    GameOverScreen.cpp \
+    Mediaplayer.cpp
 
 HEADERS  += \
     Enemy.h \
     Player.h \
     Game.h \
-    mediaplayer.h \
     Bullet.h \
     Score.h \
     Lives.h \
     Ammo.h \
-    GameOverScreen.h
+    GameOverScreen.h \
+    Mediaplayer.h

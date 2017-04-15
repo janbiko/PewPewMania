@@ -1,6 +1,5 @@
 #include "Player.h"
 #include "Game.h"
-#include <QDebug>
 
 Player::Player(int gameWidth, int gameHeight) : QObject(), QGraphicsPixmapItem()
 {

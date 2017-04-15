@@ -10,7 +10,7 @@
 #include "Ammo.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
-#include "mediaplayer.h"
+#include "Mediaplayer.h"
 
 extern Ammo * ammo;
 
@@ -24,7 +24,6 @@ public:
     void movePlayer();
     void updatePlayer();
     void resetPlayer();
-
 
 public slots:
     void animateRightWalkingPlayer();
