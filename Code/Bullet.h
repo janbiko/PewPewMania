@@ -19,7 +19,7 @@ private:
     bool checkForEnemyCollision();
     int bBulletWidth = 5;
     int bBulletHeight = 1;
-    int bBulletSpeed = 5;
+    int bBulletSpeed = 7;
     int bGameWidth;
 
 public slots:
