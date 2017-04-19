@@ -3,6 +3,7 @@
 
 #include <QGraphicsTextItem>
 #include <QFont>
+#include <Mediaplayer.h>
 
 class Lives : public QGraphicsTextItem
 {
@@ -17,6 +18,7 @@ private:
     int lGameWidth;
     int lLivesXOffset = 100;
     int lFontSize = 18;
+    MediaPlayer * mediaPlayer;
 
 };
 

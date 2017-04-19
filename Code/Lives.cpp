@@ -8,11 +8,13 @@ Lives::Lives(int gameWidth)
     setDefaultTextColor(Qt::white);
     setFont(QFont("power green small", lFontSize));
     setPos(lGameWidth - lLivesXOffset, y());
+    mediaPlayer = new MediaPlayer();
 }
 
 void Lives::decreaseLives()
 {
     --lLives;
+    mediaPlayer->playHitSound();
     setPlainText(QString("Lives: ") + QString::number(lLives));
 }
 

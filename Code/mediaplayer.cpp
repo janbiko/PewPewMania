@@ -20,6 +20,12 @@ MediaPlayer::MediaPlayer() : QObject()
     mpReloadSoundPlaylist->addMedia(QUrl("../assets/snd/reload.mp3"));
     mpReloadSound = new QMediaPlayer();
     mpReloadSound->setPlaylist(mpReloadSoundPlaylist);
+
+    // hit sound
+    mpHitSoundPlaylist = new QMediaPlaylist();
+    mpHitSoundPlaylist->addMedia(QUrl("../assets/snd/hit.mp3"));
+    mpHitSound = new QMediaPlayer();
+    mpHitSound->setPlaylist(mpHitSoundPlaylist);
 }
 
 void MediaPlayer::playBackgroundMusic()
@@ -37,4 +43,10 @@ void MediaPlayer::playReloadSound()
 {
     mpReloadSound->stop();
     mpReloadSound->play();
+}
+
+void MediaPlayer::playHitSound()
+{
+    mpHitSound->stop();
+    mpHitSound->play();
 }

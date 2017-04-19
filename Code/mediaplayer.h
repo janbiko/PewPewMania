@@ -14,6 +14,7 @@ public:
     void playBackgroundMusic();
     void playShootingSound();
     void playReloadSound();
+    void playHitSound();
 
 private:
     // background music
@@ -27,6 +28,10 @@ private:
     // reload sound
     QMediaPlaylist * mpReloadSoundPlaylist;
     QMediaPlayer * mpReloadSound;
+
+    // hit sound
+    QMediaPlaylist * mpHitSoundPlaylist;
+    QMediaPlayer * mpHitSound;
 
 };
 

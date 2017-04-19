@@ -8,8 +8,6 @@
 #include <Bullet.h>
 #include "Score.h"
 #include "Ammo.h"
-#include <QMediaPlayer>
-#include <QMediaPlaylist>
 #include "Mediaplayer.h"
 
 extern Ammo * ammo;
