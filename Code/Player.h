@@ -23,7 +23,7 @@ public:
     void resetPlayer();
 
 private slots:
-    void animation();
+    void playerAnimation();
 
 private:
     void movePlayer();

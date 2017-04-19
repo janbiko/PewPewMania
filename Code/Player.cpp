@@ -11,8 +11,9 @@ Player::Player(int gameWidth, int gameHeight) : QObject(), QGraphicsPixmapItem()
     setPos(pX, pY);
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
     pAnimationTimer = new QTimer(this);
-    connect(pAnimationTimer, SIGNAL(timeout()), this, SLOT(animation()));
+    connect(pAnimationTimer, SIGNAL(timeout()), this, SLOT(playerAnimation()));
     mediaplayer = new MediaPlayer();    
+    pAnimationTimer->start(100);
 }
 
 void Player::animatePlayer()
@@ -21,7 +22,7 @@ void Player::animatePlayer()
     pAnimationTimer->start(50);
 }
 
-void Player::animation()
+void Player::playerAnimation()
 {
     if(pCurrentFrame == 4) pCurrentFrame = 0;
     if(pCurrentFrame == 0) {
@@ -47,19 +48,19 @@ void Player::keyPressEvent(QKeyEvent *event){
     switch(event->key()){
         case Qt::Key_Left:
             keyLeftPressed = true;
-            animatePlayer();
+            //animatePlayer();
             break;
         case Qt::Key_Right:
             keyRightPressed = true;
-            animatePlayer();
+            //animatePlayer();
             break;
         case Qt::Key_Up:
             keyUpPressed = true;
-            animatePlayer();
+            //animatePlayer();
             break;
         case Qt::Key_Down:
             keyDownPressed = true;
-            animatePlayer();
+            //animatePlayer();
             break;
         case Qt::Key_Y:     //face left
             pFacingSide = 'l';
@@ -101,19 +102,19 @@ void Player::keyReleaseEvent(QKeyEvent *event){
         switch(event->key()){
             case Qt::Key_Left:
                 keyLeftPressed = false;
-                pAnimationTimer->stop();
+                //pAnimationTimer->stop();
                 break;
             case Qt::Key_Right:
                 keyRightPressed = false;
-                pAnimationTimer->stop();
+                //pAnimationTimer->stop();
                 break;
             case Qt::Key_Up:
                 keyUpPressed = false;
-                pAnimationTimer->stop();
+                //pAnimationTimer->stop();
                 break;
             case Qt::Key_Down:
                 keyDownPressed = false;
-                pAnimationTimer->stop();
+                //pAnimationTimer->stop();
                 break;
         }
     }
