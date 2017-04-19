@@ -1,0 +1,19 @@
+Sounds:
+
+background_music.wav : https://opengameart.org/content/nes-shooter-music-5-tracks-3-jingles
+
+hit.mp3 : http://soundbible.com/1454-Pain.html
+
+reload.mp3 : https://opengameart.org/content/handling-guns
+
+shoot.mp3 : http://soundbible.com/1998-Gun-Fire.html
+
+
+Images:
+
+background.png : https://opengameart.org/node/10021
+
+all player images : https://opengameart.org/content/cowboy
+
+all enemy images : https://opengameart.org/content/gangster
+
