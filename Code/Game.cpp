@@ -13,7 +13,6 @@
 #include <QDebug>
 
 void Game::updateGame(){
-    player->movePlayer();
     player->updatePlayer();
     if (lives->getLives() == 0) {
         timer->stop();
@@ -110,8 +109,4 @@ Game::Game(QWidget *parent): QWidget(parent)
     QGraphicsView *view = new QGraphicsView(scene, this);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    qDebug() << scene->height();
 }
-
-

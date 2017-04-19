@@ -21,15 +21,14 @@ public:
     Player(int gameWidth, int gameHeight);
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
-    void movePlayer();
     void updatePlayer();
     void resetPlayer();
 
-public slots:
-    void animateRightWalkingPlayer();
-    void animateLeftWalkingPlayer();
+private slots:
+    void animation();
 
 private:
+    void movePlayer();
     void initValues();
     void shoot();
     void resetKeys();
