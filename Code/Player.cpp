@@ -12,19 +12,21 @@ Player::Player(int gameWidth, int gameHeight) : QObject(), QGraphicsPixmapItem()
     keyUpPressed = keyDownPressed = keyLeftPressed = keyRightPressed = false;
     pAnimationTimer = new QTimer(this);
     connect(pAnimationTimer, SIGNAL(timeout()), this, SLOT(playerAnimation()));
-    mediaplayer = new MediaPlayer();    
-    pAnimationTimer->start(100);
+    mediaplayer = new MediaPlayer();
 }
 
 void Player::animatePlayer()
 {
-    pAnimationTimer->stop();
-    pAnimationTimer->start(50);
+    if(keyLeftPressed == true || keyRightPressed == true || keyUpPressed == true || keyDownPressed == true) {
+        pAnimationTimer->start(100);
+    } else {
+        pAnimationTimer->stop();
+    }
+
 }
 
 void Player::playerAnimation()
 {
-    if(pCurrentFrame == 4) pCurrentFrame = 0;
     if(pCurrentFrame == 0) {
         if (pFacingSide == 'l') {setPixmap(QPixmap("../assets/img/player/PlayerWalkLeft0.png"));}
         else {setPixmap(QPixmap("../assets/img/player/PlayerWalkRight0.png"));}
@@ -40,7 +42,7 @@ void Player::playerAnimation()
     } else if(pCurrentFrame == 3) {
         if (pFacingSide == 'l') {setPixmap(QPixmap("../assets/img/player/PlayerWalkLeft3.png"));}
         else {setPixmap(QPixmap("../assets/img/player/PlayerWalkRight3.png"));}
-        ++pCurrentFrame;
+        pCurrentFrame = 0;
     }
 }
 
@@ -48,19 +50,19 @@ void Player::keyPressEvent(QKeyEvent *event){
     switch(event->key()){
         case Qt::Key_Left:
             keyLeftPressed = true;
-            //animatePlayer();
+            animatePlayer();
             break;
         case Qt::Key_Right:
             keyRightPressed = true;
-            //animatePlayer();
+            animatePlayer();
             break;
         case Qt::Key_Up:
             keyUpPressed = true;
-            //animatePlayer();
+            animatePlayer();
             break;
         case Qt::Key_Down:
             keyDownPressed = true;
-            //animatePlayer();
+            animatePlayer();
             break;
         case Qt::Key_Y:     //face left
             pFacingSide = 'l';
@@ -98,25 +100,23 @@ void Player::keyPressEvent(QKeyEvent *event){
 }
 
 void Player::keyReleaseEvent(QKeyEvent *event){
-    if(!event->isAutoRepeat()){
-        switch(event->key()){
-            case Qt::Key_Left:
-                keyLeftPressed = false;
-                //pAnimationTimer->stop();
-                break;
-            case Qt::Key_Right:
-                keyRightPressed = false;
-                //pAnimationTimer->stop();
-                break;
-            case Qt::Key_Up:
-                keyUpPressed = false;
-                //pAnimationTimer->stop();
-                break;
-            case Qt::Key_Down:
-                keyDownPressed = false;
-                //pAnimationTimer->stop();
-                break;
-        }
+    switch(event->key()){
+        case Qt::Key_Left:
+            keyLeftPressed = false;
+            pAnimationTimer->stop();
+            break;
+        case Qt::Key_Right:
+            keyRightPressed = false;
+            pAnimationTimer->stop();
+            break;
+        case Qt::Key_Up:
+            keyUpPressed = false;
+            pAnimationTimer->stop();
+            break;
+        case Qt::Key_Down:
+            keyDownPressed = false;
+            pAnimationTimer->stop();
+            break;
     }
 }
 
